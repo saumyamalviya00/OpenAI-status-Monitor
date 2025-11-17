@@ -1,5 +1,6 @@
 # 🚀 OpenAI Status Monitor
-
+ <br>
+</br>
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)<br>
 </br>
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.121+-green.svg)](https://fastapi.tiangolo.com/)<br>
@@ -11,12 +12,12 @@
 </br>
 > **Production-ready FastAPI application** that automatically tracks and logs service updates from status pages like OpenAI's Status Page. Built with enterprise-grade features including webhook processing, intelligent polling, and horizontal scaling capabilities.
 <br>
+</br> <br>
 </br>
 ## 🎯 **Problem Statement Solved**
 <br>
 </br>
-<br>
-</br>
+
 **Challenge**: Build a Python script that automatically tracks OpenAI service updates without manual polling inefficiency, scalable to 100+ status pages.<br>
 </br>
 
@@ -37,12 +38,12 @@ Status: Investigating degraded performance
 </br>
 A production-ready FastAPI application that automatically tracks and logs service updates from status pages like OpenAI's Status Page. Supports both webhook-based event delivery and efficient polling with smart caching.
 <br>
+</br> <br>
 </br>
 ## 🏗️ **Architecture Overview**
 <br>
 </br>
-<br>
-</br>
+
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │   Status Pages  │───▶│  FastAPI Server  │───▶│  Console Output │
@@ -55,11 +56,11 @@ A production-ready FastAPI application that automatically tracks and logs servic
 └─────────────────┘                            └─────────────────┘
 ```
 <br>
+</br> <br>
 </br>
 ## 🚀 **Key Technical Features**<br>
 </br>
-<br>
-</br>
+
 - **🔄 Event-Driven**: Webhook-first architecture with polling fallback<br>
 </br>
 - **⚡ Performance**: ETag/If-Modified-Since HTTP caching<br>
@@ -74,10 +75,10 @@ A production-ready FastAPI application that automatically tracks and logs servic
 </br>
 - **🐳 DevOps**: Docker support with docker-compose<br>
 </br>
-
+ <br>
+</br>
 ## 🎯 Assignment Requirements Met
 <br>
-</br><br>
 </br>
 ✅ **Event-driven approach**: Primary webhook endpoint (`/webhook`) for real-time updates  <br>
 </br>
@@ -89,10 +90,9 @@ A production-ready FastAPI application that automatically tracks and logs servic
 </br>
 ✅ **Deduplication**: Prevents duplicate status updates across restarts <br>
 </br>
-
+ <br></br>
 ## ✨ Features
  <br>
-</br> <br>
 </br>
 ### Core Functionality 
 - **FastAPI webhook endpoint** (`/webhook`) to receive incident and component updates <br>
@@ -107,10 +107,10 @@ A production-ready FastAPI application that automatically tracks and logs servic
 </br>
 - **Health check endpoint** (`/health`) for monitoring and service discovery <br>
 </br>
-
-### Production Improvements <br>
-</br> <br>
+ <br>
 </br>
+### Production Improvements <br>
+</br> 
 - **Structured logging** with configurable log levels (replaces print statements) <br>
 </br>
 - **Graceful error handling** with automatic Redis fallback <br>
@@ -121,264 +121,132 @@ A production-ready FastAPI application that automatically tracks and logs servic
 </br>
 - **Background task management** for long-running poller processes <br>
 </br>
-
+ <br>
+</br>
 ## 📋 Requirements
  <br>
-</br> <br>
 </br>
 - Python 3.11+ <br>
 </br>
 - Dependencies: `fastapi`, `uvicorn[standard]`, `httpx`, `python-dateutil`, `redis>=4.5.0`
  <br>
+</br> <br>
 </br>
 ## 🚀 Quick Start
  <br>
-</br> <br>
+</br> 
+### Option 1: Local Development <br>
 </br>
-### Option 1: Local Development
 ```bash
-# 1. Clone repository
-git clone https://github.com/saumyamalviya00/OpenAI-status-Monitor.git
-cd OpenAI-status-Monitor
+# 1. Clone repository <br>
+</br>
+git clone https://github.com/saumyamalviya00/OpenAI-status-Monitor.git <br>
+</br>
+cd OpenAI-status-Monitor <br>
+</br>
 
-# 2. Install dependencies
-pip install -r requirements.txt
+# 2. Install dependencies <br>
+</br>
+pip install -r requirements.txt <br>
+</br>
 
-# 3. Configure environment
-cp .env.example .env
-# Edit .env as needed
+# 3. Configure environment <br>
+</br>
+cp .env.example .env <br>
+</br>
+# Edit .env as needed <br>
+</br>
 
-# 4. Run application
+# 4. Run application <br>
+</br>
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-
-# 5. Test (in new terminal)
-python test_webhook.py
+ <br>
+</br>
+# 5. Test (in new terminal) <br>
+</br>
+python test_webhook.py <br>
+</br>
 ```
 
-### Option 2: Docker
-```bash
-# Run with Docker Compose (includes Redis)
-docker-compose up -d
+### Option 2: Docker <br>
+</br>
+```bash 
+# Run with Docker Compose (includes Redis) <br>
+</br>
+docker-compose up -d <br>
+</br>
 
-# Or standalone Docker
-docker build -t status-monitor .
-docker run -p 8000:8000 status-monitor
+# Or standalone Docker <br>
+</br>
+docker build -t status-monitor . <br>
+</br>
+docker run -p 8000:8000 status-monitor <br>
+</br>
 ```
+ <br>
+</br>
 
-### 🎬 **Live Demo**
+## 📊 API Endpoints <br>
+</br>
 
-Once running, test with this webhook payload:
-```bash
-curl -X POST "http://localhost:8000/webhook" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "incident": {
-      "id": "demo_001",
-      "name": "OpenAI API - Chat Completions",
-      "incident_updates": [{
-        "id": "upd_001", 
-        "created_at": "2025-11-18T12:34:56Z",
-        "body": "Investigating degraded performance"
-      }]
-    }
-  }'
-```
+- **`POST /webhook`** - Receive webhook events from status providers <br>
+</br>
+- **`GET /health`** - Health check and service status <br>
+</br>
 
-**Console Output:**
-```
-[2025-11-18 12:34:56] Product: OpenAI API - Chat Completions
-Status: Investigating degraded performance
-```
+## 🏗️ Scaling to 100+ Status Pages <br>
+</br>
 
-## 🔧 Configuration
+For production deployment monitoring hundreds of status pages: <br>
+</br>
+ <br>
+</br>
+### Architecture Recommendations <br>
+</br>
 
-Create a `.env` file with these options:
+1. **Webhook-First Approach** <br>
+</br>
+   - Configure webhook endpoints with each status provider <br></br>
+   - Use load balancer (ALB/nginx) to distribute webhook traffic<br></br>
+   - Deploy multiple app instances behind the load balancer<br></br>
 
-```bash
-# HMAC secret for webhook verification (optional)
-SIGNING_SECRET=your_webhook_secret_here
-
-# Redis URL for persistent deduplication (optional)
-REDIS_URL=redis://localhost:6379/0
-
-# Enable/disable polling fallback
-ENABLE_POLLER=1
-
-# Status page to monitor
-STATUS_SUMMARY_URL=https://status.openai.com/api/v2/summary.json
-
-# Polling interval in seconds
-POLL_INTERVAL_SECONDS=30
-
-# Logging level
-LOG_LEVEL=INFO
-```
-
-## 🧪 Testing
-
-### Test Webhook with Sample Payload
-
-```powershell
-$body = '{
-  "incident": {
-    "id": "inc_001",
-    "name": "OpenAI API - Chat Completions", 
-    "incident_updates": [
-      {
-        "id": "upd_001",
-        "created_at": "2025-11-18T12:34:56Z",
-        "body": "Investigating degraded performance"
-      }
-    ]
-  }
-}'
-
-curl -X POST "http://127.0.0.1:8000/webhook" -H "Content-Type: application/json" -d $body
-```
-
-**Expected Console Output:**
-```
-[2025-11-18 12:34:56] Product: OpenAI API - Chat Completions
-Status: Investigating degraded performance
-```
-
-### Test Health Endpoint
-
-```powershell
-curl http://localhost:8000/health
-```
-
-### Run Comprehensive Tests
-
-```powershell
-python test_webhook.py
-```
-
-## 📊 API Endpoints
-
-- **`POST /webhook`** - Receive webhook events from status providers
-- **`GET /health`** - Health check and service status
-
-## 🏗️ Scaling to 100+ Status Pages
-
-For production deployment monitoring hundreds of status pages:
-
-### Architecture Recommendations
-
-1. **Webhook-First Approach**
-   - Configure webhook endpoints with each status provider
-   - Use load balancer (ALB/nginx) to distribute webhook traffic
-   - Deploy multiple app instances behind the load balancer
-
-2. **Message Queue Integration**
-   - Route webhooks → SQS/SNS → Lambda/ECS workers
-   - Decouple ingestion from processing for better fault tolerance
-   - Enable parallel processing of multiple status updates
-
-3. **Shared Storage**
-   - Use managed Redis cluster (ElastiCache/MemoryDB) for deduplication
-   - Set TTL policies to prevent unbounded growth
-   - Consider sharding by provider for very high scale
-
-4. **Monitoring & Observability**
-   - Structured logging → CloudWatch/ELK/Datadog
-   - Health checks for service discovery (ECS/K8s)
-   - Metrics for webhook success/failure rates
-
+2. **Message Queue Integration** <br>
+</br>
+   - Route webhooks → SQS/SNS → Lambda/ECS workers<br></br>
+   - Decouple ingestion from processing for better fault tolerance<br></br>
+   - Enable parallel processing of multiple status updates<br></br>
+ <br>
+</br>
+3. **Shared Storage** <br>
+</br>
+   - Use managed Redis cluster (ElastiCache/MemoryDB) for deduplication<br></br>
+   - Set TTL policies to prevent unbounded growth<br></br>
+   - Consider sharding by provider for very high scale<br></br>
+ <br>
+</br>
+4. **Monitoring & Observability** <br>
+</br>
+   - Structured logging → CloudWatch/ELK/Datadog<br></br>
+   - Health checks for service discovery (ECS/K8s)<br></br>
+   - Metrics for webhook success/failure rates<br></br>
+ <br>
+</br>
 ### Example Serverless Architecture
-
+ <br>
+</br>
 ```
 Status Providers → API Gateway → Lambda → SQS → Lambda Workers → Redis
                                    ↓
                                CloudWatch Logs
 ```
-
+ <br>
+</br>
 ## 🔒 Security
-
-- **HMAC Verification**: Supports both `X-Signature: hex` and `X-Signature: sha256=hex` formats
-- **Input Validation**: Handles malformed JSON and unexpected payload structures  
-- **Rate Limiting**: Consider adding rate limiting for production deployments
-- **TLS**: Always use HTTPS in production environments
-
-## 🐳 Docker Support
-
-```bash
-# Build and run with Docker
-docker build -t status-monitor .
-docker run -p 8000:8000 status-monitor
-
-# Or use Docker Compose with Redis
-docker-compose up
-```
-
-## 📝 Logs and Monitoring
-
-The application now uses structured logging:
-
-```json
-{
-  "timestamp": "2025-11-18 12:34:56",
-  "level": "INFO",
-  "logger": "app.main",
-  "message": "Status update",
-  "extra": {
-    "product": "OpenAI API - Chat Completions",
-    "status": "Investigating degraded performance", 
-    "incident_id": "inc_001",
-    "update_id": "upd_001"
-  }
-}
-```
-
-## 🤝 Contributing
-
-This implementation fulfills the assignment requirements with production-ready enhancements:
-- Event-driven webhook processing ✅
-- Efficient polling with caching ✅  
-- Scalable deduplication strategy ✅
-- Console output as specified ✅
-- Ready for 100+ provider monitoring ✅
-
-## 📈 **Performance & Scaling**
-
-- **Webhook Processing**: Sub-millisecond response times
-- **Memory Efficient**: TTL-based cleanup prevents memory leaks  
-- **Redis Clustering**: Horizontal scaling for deduplication
-- **Background Tasks**: Non-blocking poller with exponential backoff
-- **Load Balancer Ready**: Health checks for service discovery
-
-## 🛠️ **Tech Stack**
-
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| **API Framework** | FastAPI + Uvicorn | High-performance async web server |
-| **HTTP Client** | httpx | Async HTTP requests with connection pooling |
-| **Caching** | Redis | Persistent deduplication across restarts |
-| **Logging** | Python logging | Structured logs for monitoring |
-| **Testing** | pytest + requests | Comprehensive test coverage |
-| **Deployment** | Docker + Compose | Containerized deployment |
-
-## 🤝 **Contributing**
-
-This project demonstrates production-ready Python development practices:
-
-1. **Code Quality**: Type hints, error handling, documentation
-2. **Testing**: Unit tests, integration tests, manual test scripts  
-3. **Security**: HMAC verification, input validation
-4. **Observability**: Health checks, structured logging
-5. **DevOps**: Docker, environment configuration, scaling guides
-
-Feel free to fork and extend for your own status monitoring needs!
-
-## 📄 **License**
-
-MIT License - see [LICENSE](LICENSE) file for details.
-
----
-
-**Built for a technical assignment demonstrating event-driven architecture and scalable system design. Ready for production deployment.**
-#   O p e n A I - s t a t u s - M o n i t o r 
- 
-
- 
-
+ <br>
+</br>
+- **HMAC Verification**: Supports both `X-Signature: hex` and `X-Signature: sha256=hex` formats<br></br>
+- **Input Validation**: Handles malformed JSON and unexpected payload structures  <br></br>
+- **Rate Limiting**: Consider adding rate limiting for production deployments<br></br>
+- **TLS**: Always use HTTPS in production environments<br></br>
+ <br>
+</br>
