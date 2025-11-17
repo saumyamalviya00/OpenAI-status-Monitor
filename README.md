@@ -1,21 +1,30 @@
 # 🚀 OpenAI Status Monitor
 
-[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.121+-green.svg)](https://fastapi.tiangolo.com/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)<br>
+</br>
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.121+-green.svg)](https://fastapi.tiangolo.com/)<br>
+</br>
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)<br>
+</br>
 [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 <br>
 </br>
-
 > **Production-ready FastAPI application** that automatically tracks and logs service updates from status pages like OpenAI's Status Page. Built with enterprise-grade features including webhook processing, intelligent polling, and horizontal scaling capabilities.
-
+<br>
+</br>
 ## 🎯 **Problem Statement Solved**
+<br>
+</br>
+<br>
+</br>
+**Challenge**: Build a Python script that automatically tracks OpenAI service updates without manual polling inefficiency, scalable to 100+ status pages.<br>
+</br>
 
-**Challenge**: Build a Python script that automatically tracks OpenAI service updates without manual polling inefficiency, scalable to 100+ status pages.
+**Solution**: Event-driven architecture with webhook-first approach + intelligent ETag-based polling fallback.<br>
+</br>
 
-**Solution**: Event-driven architecture with webhook-first approach + intelligent ETag-based polling fallback.
-
-**Output**: Real-time console notifications in the exact format required:
+**Output**: Real-time console notifications in the exact format required:<br>
+</br>
 ```
 [2025-11-18 12:34:56] Product: OpenAI API - Chat Completions
 Status: Investigating degraded performance
@@ -24,11 +33,16 @@ Status: Investigating degraded performance
 ---
 
 ---
-
+<br>
+</br>
 A production-ready FastAPI application that automatically tracks and logs service updates from status pages like OpenAI's Status Page. Supports both webhook-based event delivery and efficient polling with smart caching.
-
+<br>
+</br>
 ## 🏗️ **Architecture Overview**
-
+<br>
+</br>
+<br>
+</br>
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │   Status Pages  │───▶│  FastAPI Server  │───▶│  Console Output │
@@ -40,49 +54,87 @@ A production-ready FastAPI application that automatically tracks and logs servic
 │  (Optional)     │    └──────────────────┘    │    Logging      │
 └─────────────────┘                            └─────────────────┘
 ```
-
-## 🚀 **Key Technical Features**
-
-- **🔄 Event-Driven**: Webhook-first architecture with polling fallback
-- **⚡ Performance**: ETag/If-Modified-Since HTTP caching
-- **🔒 Security**: HMAC-SHA256 signature verification
-- **📊 Monitoring**: Health checks, structured logging, metrics
-- **🌐 Scalability**: Redis clustering, horizontal scaling ready
-- **🧪 Testing**: Comprehensive test suite with multiple scenarios
-- **🐳 DevOps**: Docker support with docker-compose
+<br>
+</br>
+## 🚀 **Key Technical Features**<br>
+</br>
+<br>
+</br>
+- **🔄 Event-Driven**: Webhook-first architecture with polling fallback<br>
+</br>
+- **⚡ Performance**: ETag/If-Modified-Since HTTP caching<br>
+</br>
+- **🔒 Security**: HMAC-SHA256 signature verification<br>
+</br>
+- **📊 Monitoring**: Health checks, structured logging, metrics<br>
+</br>
+- **🌐 Scalability**: Redis clustering, horizontal scaling ready<br>
+</br>
+- **🧪 Testing**: Comprehensive test suite with multiple scenarios<br>
+</br>
+- **🐳 DevOps**: Docker support with docker-compose<br>
+</br>
 
 ## 🎯 Assignment Requirements Met
-
-✅ **Event-driven approach**: Primary webhook endpoint (`/webhook`) for real-time updates  
-✅ **Efficient polling fallback**: Uses ETag/If-Modified-Since to minimize data transfer  
-✅ **Scalable architecture**: Redis deduplication, structured logging, health checks  
-✅ **Console output**: Prints formatted status updates as required  
-✅ **Deduplication**: Prevents duplicate status updates across restarts
+<br>
+</br><br>
+</br>
+✅ **Event-driven approach**: Primary webhook endpoint (`/webhook`) for real-time updates  <br>
+</br>
+✅ **Efficient polling fallback**: Uses ETag/If-Modified-Since to minimize data transfer   <br>
+</br>
+✅ **Scalable architecture**: Redis deduplication, structured logging, health checks   <br>
+</br>
+✅ **Console output**: Prints formatted status updates as required   <br>
+</br>
+✅ **Deduplication**: Prevents duplicate status updates across restarts <br>
+</br>
 
 ## ✨ Features
+ <br>
+</br> <br>
+</br>
+### Core Functionality 
+- **FastAPI webhook endpoint** (`/webhook`) to receive incident and component updates <br>
+</br>
+- **Efficient poller** for status summary endpoints (uses ETag/If-Modified-Since caching) <br>
+</br>
+- **Smart deduplication** (in-memory by default, Redis for persistence across restarts) <br>
+</br>
+- **HMAC signature verification** for webhook security (supports both plain hex and `sha256=` formats) <br>
+</br>
+- **Component ID mapping** for readable product names in console output <br>
+</br>
+- **Health check endpoint** (`/health`) for monitoring and service discovery <br>
+</br>
 
-### Core Functionality
-- **FastAPI webhook endpoint** (`/webhook`) to receive incident and component updates
-- **Efficient poller** for status summary endpoints (uses ETag/If-Modified-Since caching)
-- **Smart deduplication** (in-memory by default, Redis for persistence across restarts)
-- **HMAC signature verification** for webhook security (supports both plain hex and `sha256=` formats)
-- **Component ID mapping** for readable product names in console output
-- **Health check endpoint** (`/health`) for monitoring and service discovery
-
-### Production Improvements
-- **Structured logging** with configurable log levels (replaces print statements)
-- **Graceful error handling** with automatic Redis fallback
-- **TTL-based cleanup** for deduplication sets to prevent memory leaks
-- **Robust signature verification** supporting multiple webhook formats
-- **Background task management** for long-running poller processes
+### Production Improvements <br>
+</br> <br>
+</br>
+- **Structured logging** with configurable log levels (replaces print statements) <br>
+</br>
+- **Graceful error handling** with automatic Redis fallback <br>
+</br>
+- **TTL-based cleanup** for deduplication sets to prevent memory leaks <br>
+</br>
+- **Robust signature verification** supporting multiple webhook formats <br>
+</br>
+- **Background task management** for long-running poller processes <br>
+</br>
 
 ## 📋 Requirements
-
-- Python 3.11+
+ <br>
+</br> <br>
+</br>
+- Python 3.11+ <br>
+</br>
 - Dependencies: `fastapi`, `uvicorn[standard]`, `httpx`, `python-dateutil`, `redis>=4.5.0`
-
+ <br>
+</br>
 ## 🚀 Quick Start
-
+ <br>
+</br> <br>
+</br>
 ### Option 1: Local Development
 ```bash
 # 1. Clone repository
@@ -329,3 +381,4 @@ MIT License - see [LICENSE](LICENSE) file for details.
  
 
  
+
