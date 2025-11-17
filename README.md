@@ -4,6 +4,8 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.121+-green.svg)](https://fastapi.tiangolo.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+<br>
+</br>
 
 > **Production-ready FastAPI application** that automatically tracks and logs service updates from status pages like OpenAI's Status Page. Built with enterprise-grade features including webhook processing, intelligent polling, and horizontal scaling capabilities.
 
@@ -325,4 +327,5 @@ MIT License - see [LICENSE](LICENSE) file for details.
 **Built for a technical assignment demonstrating event-driven architecture and scalable system design. Ready for production deployment.**
 #   O p e n A I - s t a t u s - M o n i t o r 
  
+
  
